@@ -15,8 +15,8 @@ if (vivo = true)
 
 	if (place_meeting(x-16,y,obj_protag))
 	{
-		hspeed += 0
-		vivo = false
+		//hspeed += 0
+		//vivo = false
 	}
 }
 

@@ -18,24 +18,10 @@ if (vivo = true)
 	if (keyboard_check_pressed(vk_space) && not(pulando))
 	{
 		pulando = true
-		show_debug_message("Pulando")
 		vspeed -= 9
 	}
 
-	// Reset e Restart
-
-	if (place_meeting(x+16,y,obj_obstac))
-	{
-		vspeed = 0
-		show_debug_message("Não ta mais pulando")
-		vivo = false
-	}
 	
-	if (place_meeting(x+16,y,obj_rastejador))
-	{
-		vspeed = 0
-		vivo = false
-	}
 	
 	// Música
 	

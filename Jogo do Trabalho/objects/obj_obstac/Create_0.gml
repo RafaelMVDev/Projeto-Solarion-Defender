@@ -1,1 +1,3 @@
 vivo = true
+
+tocouPlayer = false
