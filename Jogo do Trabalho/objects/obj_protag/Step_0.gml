@@ -1,3 +1,4 @@
+
 if (vivo = true)
 {
 	// Gravidade
@@ -5,6 +6,7 @@ if (vivo = true)
 	if (place_meeting(x,y+7,obj_chao))
 	{
 		vspeed = 0
+		pulando = false
 	}
 		else
 	{
@@ -13,8 +15,10 @@ if (vivo = true)
 
 	// Pulo
 
-	if (keyboard_check_pressed(vk_space))
+	if (keyboard_check_pressed(vk_space) && not(pulando))
 	{
+		pulando = true
+		show_debug_message("Pulando")
 		vspeed -= 9
 	}
 
@@ -23,6 +27,7 @@ if (vivo = true)
 	if (place_meeting(x+16,y,obj_obstac))
 	{
 		vspeed = 0
+		show_debug_message("Não ta mais pulando")
 		vivo = false
 	}
 	
