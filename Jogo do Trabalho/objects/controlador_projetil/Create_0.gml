@@ -3,13 +3,13 @@
 
 tempo_entre_disparos = 500000 // 0.5 segundo
 ultimo_disparo = get_timer()
-projeteis = []
+//projeteis = []
 
 
 
 function atirar_projetil(){
-	var _projetil = instance_create_layer(inst_60ADEB33.x + 32, inst_60ADEB33.y - 80, layer_get_id("Instances"), projetil_player)
-	array_push(projeteis,_projetil)
+	instance_create_layer(inst_60ADEB33.x + 32, inst_60ADEB33.y - 80, "Projeteis", projetil_player)
+	//array_push(projeteis,_projetil)
 }
 
 function parar_projetil(){
@@ -18,20 +18,29 @@ function parar_projetil(){
 
 
 function deletar_projetil(){
+	
 	instance_destroy(self)
 }
 
 
 function deletar_projeteis(){
+	
+	
+	var projeteis_layer_id = layer_get_id("Projeteis")
+	var projeteis = layer_get_all_elements(projeteis_layer_id)
+	
+	show_debug_message("Instances in layer: " + string(projeteis))
 	for (i = 0; i < array_length(projeteis); i++;)
 	{
-		var inst = projeteis[i]
-	
-		if inst.object_index == projetil_player.object_index
-		{	
-			instance_destroy(inst)
+		var inst = layer_instance_get_instance(projeteis[i])
+		
+		if layer_get_element_type(projeteis[i]) != layerelementtype_instance{
+			continue
 		}
+	
+		//destroi os projeteis
+		instance_destroy(inst)
+		
 	}
 	
-	projeteis = []
 }

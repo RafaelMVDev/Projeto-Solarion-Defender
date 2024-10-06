@@ -78,20 +78,28 @@ function desenharTelaGameOver(){
 
 
 function resetInimigos(){
-	show_debug_message(string(instance_number(all)))
-	for (i = 0; i < instance_number(all); i++;)
-	{	
-		
-		var inst = instance_id[i]
-		show_debug_message("HERE: "+string(inst))
-		show_debug_message(object_get_name(inst.object_index))
-		if inst.object_index == obj_obstac.object_index
-		{	
-			inst.x = 1450
-			inst.vivo = true
-			inst.tocouPlayer = false
+
+	var inimigos_layer_id = layer_get_id("Inimigos")
+	var inimigos = layer_get_all_elements(inimigos_layer_id)
+	
+	show_debug_message("Instances in layer: " + string(inimigos))
+	
+	for (i = 0; i < array_length(inimigos); i++;)
+	{
+		var inst = layer_instance_get_instance(inimigos[i])
+		show_debug_message(string(inst))
+		if layer_get_element_type(inimigos[i]) != layerelementtype_instance{
+			show_debug_message("É diferente")
+			continue
 		}
+	
+		// MUDAR ISSO DEPOIS --> Destruir o inimigo e reespawnar ele
+		inst.x = 1450
+		inst.vivo = true
+		inst.tocouPlayer = false
+		
 	}
+	
 }
 
 
