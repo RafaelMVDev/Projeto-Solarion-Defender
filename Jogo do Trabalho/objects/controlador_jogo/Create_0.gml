@@ -78,9 +78,13 @@ function desenharTelaGameOver(){
 
 
 function resetInimigos(){
+	show_debug_message(string(instance_number(all)))
 	for (i = 0; i < instance_number(all); i++;)
-	{
+	{	
+		
 		var inst = instance_id[i]
+		show_debug_message("HERE: "+string(inst))
+		show_debug_message(object_get_name(inst.object_index))
 		if inst.object_index == obj_obstac.object_index
 		{	
 			inst.x = 1450
@@ -89,6 +93,8 @@ function resetInimigos(){
 		}
 	}
 }
+
+
 
 
 function playerMorreu(){
@@ -109,6 +115,7 @@ function playerMorreu(){
 		player_score = 0 // Resetando score do player
 		
 		// Resetando inimigos
+		controlador_projetil.deletar_projeteis()
 		resetInimigos()
 		audio_play_sound(level_music,0,true)
 	}

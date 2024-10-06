@@ -24,7 +24,7 @@
     {"name":"obj_chao","order":2,"path":"objects/obj_chao/obj_chao.yy",},
     {"name":"obj_obstac","order":1,"path":"objects/obj_obstac/obj_obstac.yy",},
     {"name":"obj_rastejador","order":3,"path":"objects/obj_rastejador/obj_rastejador.yy",},
-    {"name":"Tiro","order":5,"path":"objects/Tiro/Tiro.yy",},
+    {"name":"projetil_player","order":5,"path":"objects/projetil_player/projetil_player.yy",},
     {"name":"provisorio_game_over","order":1,"path":"sounds/provisorio_game_over/provisorio_game_over.yy",},
     {"name":"projetil","order":4,"path":"sprites/projetil/projetil.yy",},
     {"name":"spr_chao","order":2,"path":"sprites/spr_chao/spr_chao.yy",},

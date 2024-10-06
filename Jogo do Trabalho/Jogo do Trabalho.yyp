@@ -43,7 +43,7 @@
     {"id":{"name":"obj_obstac","path":"objects/obj_obstac/obj_obstac.yy",},},
     {"id":{"name":"obj_protag","path":"objects/obj_protag/obj_protag.yy",},},
     {"id":{"name":"obj_rastejador","path":"objects/obj_rastejador/obj_rastejador.yy",},},
-    {"id":{"name":"Tiro","path":"objects/Tiro/Tiro.yy",},},
+    {"id":{"name":"projetil_player","path":"objects/projetil_player/projetil_player.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"level_music","path":"sounds/level_music/level_music.yy",},},
     {"id":{"name":"provisorio_game_over","path":"sounds/provisorio_game_over/provisorio_game_over.yy",},},

@@ -3,8 +3,11 @@
 
 if (x >= -120 and x <= -100)
 	{	
-		//instance_destroy()
+		instance_destroy(self)
 	}
 else{
-	x += 9
+	if inst_60ADEB33.vivo {
+		x += 9
+	}
+
 }
