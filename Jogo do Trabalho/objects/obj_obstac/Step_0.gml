@@ -1,21 +1,27 @@
-if inst_1C2092BB.vivo
+if self.vivo
 {
 	// Velocidade
 	//show_debug_message("X: " + string(x) + "; Y: " + string(y))
-	x -= 5
+	if inst_60ADEB33.vivo {
+		x -= 5
+	}
+	
+	if (x + self.sprite_width/2) + 50 < view_xport //-  view_wport
+	{	
+		show_debug_message("Distruindo!")
+		instance_destroy(self)
+	}
+	
 
 	// Loop do Meteoro
 
-	if (x >= -120 and x <= -100)
-	{	
-		x = 1450
-	}
+
 
 	// Reset
 }
 
 else 
 {
-	
+	instance_destroy(self)
 }
 	

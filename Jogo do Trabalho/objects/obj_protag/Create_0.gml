@@ -18,11 +18,13 @@ function handlePulo(){
 	{	
 		pulando = true
 		puloInitYPos = y
+		show_debug_message("Pulando")
 		vspeed -= 9
 	}
 	
 	else{
 		if abs( ( y - puloInitYPos )) > ALTURA_MAX_PULO{
+			//show_debug_message("Caindo")
 			vspeed += 0.25
 		}
 		else{

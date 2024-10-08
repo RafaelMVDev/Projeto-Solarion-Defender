@@ -1,8 +1,10 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
+/// Para numeros aleatórios
+
+randomize()
 
 
 // Variaveis para controle do pause do jogo
+
 jogoPausado = false
 superficieId = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 telaMorte = false
@@ -16,7 +18,28 @@ inimigos_derrotados = 0
 ultimo_score_dado = get_timer()
 tempo_debounce_score = 100000 // em microsegundos == 
 
+// --- INIMIGOS ---- 
 
+
+objetos_inimigos = {
+	inimigo_simples : {
+		_obj : obj_obstac,
+		_scale : 2.983
+	},
+	inimigo_desviar : {
+		_obj: obj_rastejador,
+		_scale:2.983
+	}
+}
+
+tipos_inimigos =[ "inimigo_simples", "inimigo_desviar"]
+
+spawn_ultimo_inimigo = get_timer()
+tempo_entre_inim_spawns = 5000000 // 5 segundos
+
+inimigo_simples_escala = 2.9375 // tamanho
+
+INIMIGOS_DEFAULT_Y = 683
 
 
 // Pausar //
@@ -109,19 +132,19 @@ function playerMorreu(){
 	
 	inst_60ADEB33.vspeed = 0 
 	audio_stop_sound(level_music)
-	show_debug_message("Player Morreu")
+	//show_debug_message("Player Morreu")
 	
 
 	if (keyboard_check_pressed(ord("R")))
 	{	
-		show_debug_message("Apertou fii")
+		//show_debug_message("Apertou fii")
 		// Resetando status do player
 		var player = inst_60ADEB33 // mudar para uma função depois
 		player.y = 683
 		player.vivo = true
 		player.pulando = false
 		player_score = 0 // Resetando score do player
-		
+		inimigos_derrotados = 0
 		// Resetando inimigos
 		controlador_projetil.deletar_projeteis()
 		resetInimigos()
@@ -141,3 +164,50 @@ function aumentarScorePlayer(quantidade,tipo){
 	}
 }
 
+function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_color){
+	
+	if (_sprite_color == undefined) _sprite_color = false
+	if (_random_color == undefined) _random_color = false
+	
+	var inimigo = objetos_inimigos[$ tipo_inimigo]
+
+
+	if inimigo {
+		
+		var inimigo_obj = objetos_inimigos[$ tipo_inimigo]._obj
+		//show_debug_message(string(inimigo_obj))
+		var _scale = inimigo._scale
+		if pos_x == "automatico"{
+			pos_x = view_wport + sprite_get_width( object_get_sprite(inimigo_obj)) * _scale
+		}
+		
+		if pos_y == "automatico"{
+			pos_y = INIMIGOS_DEFAULT_Y
+		}
+		
+		//show_debug_message("ACHO O INIMIGO" + object_get_name(inimigo_obj))
+		var clone_obj = instance_create_layer(pos_x,pos_y,"Inimigos",inimigo_obj)
+		clone_obj.image_xscale = _scale
+		clone_obj.image_yscale = _scale
+		clone_obj.y = pos_y
+		//show_debug_message("Clone at y: " + string(clone_obj.y))
+		if _sprite_color{
+			clone_obj.image_blend = _sprite_color
+		}
+		if _random_color{
+			var color = make_color_hsv(random(255), 255,200)
+			clone_obj.image_blend = color
+		}
+	}
+	else{
+		show_debug_message("Num tem")
+	}
+	
+}
+
+function selec_inimigo_aleatorio(){
+	var quant_inimigos = array_length(tipos_inimigos)
+	var n_aleatorio = irandom(quant_inimigos -1)
+	//show_debug_message(string("Inimigo tipo: " + string(n_aleatorio)))
+	return  tipos_inimigos[n_aleatorio]
+}

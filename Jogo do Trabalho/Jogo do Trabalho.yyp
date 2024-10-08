@@ -52,6 +52,8 @@
     {"id":{"name":"spr_obstac","path":"sprites/spr_obstac/spr_obstac.yy",},},
     {"id":{"name":"spr_protag","path":"sprites/spr_protag/spr_protag.yy",},},
     {"id":{"name":"spr_rastejador","path":"sprites/spr_rastejador/spr_rastejador.yy",},},
+    {"id":{"name":"Sprite6","path":"sprites/Sprite6/Sprite6.yy",},},
+    {"id":{"name":"Sprite7","path":"sprites/Sprite7/Sprite7.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

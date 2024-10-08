@@ -17,6 +17,5 @@ function conv_score(_score ){ // supõe que o score já esta em string
 	{
 		return ((score_zeros - score_string_lenght) * "0") + _score
 	}
-	
-	
 }
+

@@ -1,4 +1,4 @@
-/// @description Inserir descrição aqui
+        /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
 tempo_entre_disparos = 500000 // 0.5 segundo
