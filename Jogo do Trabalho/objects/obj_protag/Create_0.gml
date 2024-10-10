@@ -1,14 +1,13 @@
 vivo = true
 pulando = false
 tocandoChao = true
+vidas = 3
+
 
 audio_play_sound(level_music,0,true)
 
-ALTURA_MAX_PULO = 5
-puloInitYPos = 0 // Segurar posição do player (cheque de altura
-
-
-
+ALTURA_MAX_PULO = 10
+puloInitYPos = y // Segurar posição do player (cheque de altura
 
 
 function handlePulo(){
@@ -18,18 +17,15 @@ function handlePulo(){
 	{	
 		pulando = true
 		puloInitYPos = y
-		show_debug_message("Pulando")
 		vspeed -= 9
 	}
 	
 	else{
+		
 		if abs( ( y - puloInitYPos )) > ALTURA_MAX_PULO{
-			//show_debug_message("Caindo")
 			vspeed += 0.25
 		}
-		else{
-			//show_debug_message( y - puloInitYPos)
-		}
+	
 	}
 
 }

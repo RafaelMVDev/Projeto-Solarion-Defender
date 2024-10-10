@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Jogo do Trabalho",
-    "path":"Jogo do Trabalho.yyp",
+    "name":"Sprites",
+    "path":"folders/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

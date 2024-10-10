@@ -1,8 +1,9 @@
         /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-tempo_entre_disparos = 500000 // 0.5 segundo
+tempo_entre_disparos = 5500000 // 0.5 segundo
 ultimo_disparo = get_timer()
+tempo_voltou = true
 //projeteis = []
 
 
@@ -33,11 +34,7 @@ function deletar_projeteis(){
 	for (i = 0; i < array_length(projeteis); i++;)
 	{
 		var inst = layer_instance_get_instance(projeteis[i])
-		
-		if layer_get_element_type(projeteis[i]) != layerelementtype_instance{
-			continue
-		}
-	
+
 		//destroi os projeteis
 		instance_destroy(inst)
 		

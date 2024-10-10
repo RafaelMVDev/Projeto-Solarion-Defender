@@ -2,9 +2,10 @@
 
 randomize()
 
-
+alarm[0] = game_get_speed(gamespeed_fps) * 5
 // Variaveis para controle do pause do jogo
 
+tempo_atual = get_timer()
 jogoPausado = false
 superficieId = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 telaMorte = false
@@ -42,6 +43,12 @@ inimigo_simples_escala = 2.9375 // tamanho
 INIMIGOS_DEFAULT_Y = 683
 
 
+// Atualizar relogio do jogo
+
+function atualizar_clock(){
+	tempo_atual = get_timer()
+}
+
 // Pausar //
 function jogoPausadoHandler(){
 	controlador_jogo.jogoPausado = !jogoPausado
@@ -50,8 +57,12 @@ function jogoPausadoHandler(){
 		instance_activate_all()
 		surface_free(superficieId)
 		superficieId = -1
+		controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
+		show_debug_message( "Despausando timer: " + string(controlador_projetil.ultimo_disparo))
 	}
 	else {
+		controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
+		show_debug_message( "Pausando timer: " + string(controlador_projetil.ultimo_disparo))
 		// Talvez seja util depois
 	}
 }
@@ -195,7 +206,7 @@ function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_colo
 			clone_obj.image_blend = _sprite_color
 		}
 		if _random_color{
-			var color = make_color_hsv(random(255), 255,200)
+			var color = make_color_hsv(random(2), 255,200)
 			clone_obj.image_blend = color
 		}
 	}
