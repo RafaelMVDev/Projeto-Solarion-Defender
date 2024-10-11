@@ -7,7 +7,7 @@
 
 
 // Player morreu
-if inst_60ADEB33.vivo == false{
+if global.player_dead_state{
 	playerMorreu()
 	
 }
@@ -21,14 +21,15 @@ else{
 	}
 	
 	else{
-		atualizar_clock() // atualizar o tempo do jogo ( para cooldowns, etc)
+		//atualizar_clock() // atualizar o tempo do jogo ( para cooldowns, etc)
 		// -- Score -- //
 		aumentarScorePlayer(1,"Etapa")
 	
 		// -- Spawn Inimigos -- //
-		if (get_timer() - spawn_ultimo_inimigo ) > tempo_entre_inim_spawns 
-		{
-			spawn_ultimo_inimigo = get_timer()
+		if spawn_inimigo_permitido
+		{	
+			spawn_inimigo_permitido = false
+			//spawn_ultimo_inimigo = get_timer()
 			//show_debug_message("Spawnando inimigo!")
 			var inim_aleatorio = selec_inimigo_aleatorio()
 			//show_debug_message("Inim aleatorio: " + object_get_name(objetos_inimigos[$ inim_aleatorio]._obj))

@@ -6,7 +6,7 @@ if (x >= -120 and x <= -100)
 		instance_destroy(self)
 	}
 else{
-	if inst_60ADEB33.vivo {
+	if global.player_dead_state == false {
 		x += 9
 	}
 

@@ -36,6 +36,7 @@
   "resources":[
     {"id":{"name":"GameOverFont","path":"fonts/GameOverFont/GameOverFont.yy",},},
     {"id":{"name":"MenuFont","path":"fonts/MenuFont/MenuFont.yy",},},
+    {"id":{"name":"controlador_cooldowns","path":"objects/controlador_cooldowns/controlador_cooldowns.yy",},},
     {"id":{"name":"controlador_jogo","path":"objects/controlador_jogo/controlador_jogo.yy",},},
     {"id":{"name":"controlador_projetil","path":"objects/controlador_projetil/controlador_projetil.yy",},},
     {"id":{"name":"controle_GUI","path":"objects/controle_GUI/controle_GUI.yy",},},

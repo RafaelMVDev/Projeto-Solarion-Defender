@@ -2,13 +2,13 @@ if self.vivo
 {
 	// Velocidade
 	//show_debug_message("X: " + string(x) + "; Y: " + string(y))
-	if inst_60ADEB33.vivo {
+	if global.player_dead_state == false{
 		x -= 5
 	}
 	
 	if (x + self.sprite_width/2) + 50 < view_xport //-  view_wport
 	{	
-		show_debug_message("Distruindo!")
+		//show_debug_message("Distruindo!")
 		instance_destroy(self)
 	}
 	

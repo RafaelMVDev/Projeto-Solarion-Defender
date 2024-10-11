@@ -2,11 +2,13 @@
 
 randomize()
 
-alarm[0] = game_get_speed(gamespeed_fps) * 5
 // Variaveis para controle do pause do jogo
 
+// -- Variavéis globais --
+global.player_dead_state = false
+
 tempo_atual = get_timer()
-jogoPausado = false
+jogo_pausado = false
 superficieId = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 telaMorte = false
 jogoRecomecou = false
@@ -35,8 +37,9 @@ objetos_inimigos = {
 
 tipos_inimigos =[ "inimigo_simples", "inimigo_desviar"]
 
-spawn_ultimo_inimigo = get_timer()
-tempo_entre_inim_spawns = 5000000 // 5 segundos
+//spawn_ultimo_inimigo = get_timer()
+spawn_inimigo_permitido = false
+tempo_entre_inim_spawns = 2.5 // 2.5 segundos
 
 inimigo_simples_escala = 2.9375 // tamanho
 
@@ -51,17 +54,17 @@ function atualizar_clock(){
 
 // Pausar //
 function jogoPausadoHandler(){
-	controlador_jogo.jogoPausado = !jogoPausado
+	controlador_jogo.jogo_pausado = !jogo_pausado
 	
-	if not(controlador_jogo.jogoPausado){
+	if not(controlador_jogo.jogo_pausado){
 		instance_activate_all()
 		surface_free(superficieId)
 		superficieId = -1
-		controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
+		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
 		show_debug_message( "Despausando timer: " + string(controlador_projetil.ultimo_disparo))
 	}
 	else {
-		controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
+		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
 		show_debug_message( "Pausando timer: " + string(controlador_projetil.ultimo_disparo))
 		// Talvez seja util depois
 	}
@@ -70,9 +73,10 @@ function jogoPausadoHandler(){
 // desenho do menu e detecção da mudança da var jogoPausado
 function desenharPausaMenu(){ 
 	
-	
-		if (controlador_jogo.jogoPausado && inst_60ADEB33.vivo)
-		{
+		
+		if (controlador_jogo.jogo_pausado && global.player_dead_state == false)
+		{	
+			//alarm[0] ++
 			if !surface_exists(superficieId) // se a superficie não existir, a gente cria uma ( as vezes retorna false se o jogo tiver minimazado, por isso checamos abaixo o id da superficie )
 			{ 
 				if superficieId == -1 // signfica q a gente pode ir para o estado pausado (-1 = superficie ja foi limpada desde o ultimo pause )
@@ -104,7 +108,6 @@ function desenharPausaMenu(){
 
 
 function desenharTelaGameOver(){
-	show_debug_message("GAME OVER")
 	draw_set_font(GameOverFont)
 	draw_set_halign(fa_center)
 	draw_text_transformed(view_wport / 2, (view_hport / 2) - 100,"GAME OVER",0.5,0.5,0)
@@ -128,9 +131,7 @@ function resetInimigos(){
 		}
 	
 		// MUDAR ISSO DEPOIS --> Destruir o inimigo e reespawnar ele
-		inst.x = 1450
-		inst.vivo = true
-		inst.tocouPlayer = false
+
 		
 	}
 	
@@ -143,6 +144,7 @@ function playerMorreu(){
 	
 	inst_60ADEB33.vspeed = 0 
 	audio_stop_sound(level_music)
+	
 	//show_debug_message("Player Morreu")
 	
 
@@ -150,9 +152,13 @@ function playerMorreu(){
 	{	
 		//show_debug_message("Apertou fii")
 		// Resetando status do player
+		controlador_cooldowns.alarm[0] = game_get_speed(gamespeed_fps) * 3 // resetar spawn de inimigos
+		controlador_cooldowns.alarm[1] = game_get_speed(gamespeed_fps) * 0.5 // resetar lançamento de projetil
+		
 		var player = inst_60ADEB33 // mudar para uma função depois
 		player.y = 683
-		player.vivo = true
+		global.player_dead_state = false
+		//player.vivo = true
 		player.pulando = false
 		player_score = 0 // Resetando score do player
 		inimigos_derrotados = 0

@@ -3,7 +3,7 @@
 
 
 
-if inst_60ADEB33.vivo == false{
+if global.player_dead_state{
 
 	vspeed = 0 
 }
@@ -11,20 +11,12 @@ else
 {	
 	
 	
-	if (mouse_check_button_pressed(mb_left)) && (controlador_jogo.tempo_atual - ultimo_disparo) > tempo_entre_disparos
+	if (mouse_check_button_pressed(mb_left)) && pode_disparar
 	{	
-		ultimo_disparo = controlador_jogo.tempo_atual
+		pode_disparar = false
+		controlador_cooldowns.alarm[1]  = game_get_speed(gamespeed_fps) * tempo_entre_disparos
 		show_debug_message("Clicado")
 		atirar_projetil()
 	}
 }
 
-function pausar_projetil(){
-	tempo_atual = get_timer()
-	ultimo_disparo = get_timer - ultimo_disparo
-}
-
-function dispausar_projetil(){
-	tempo_atual = get_timer()
-	
-}

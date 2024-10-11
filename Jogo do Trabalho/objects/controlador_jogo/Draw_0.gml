@@ -7,7 +7,7 @@ desenharPausaMenu()
 
 // Morte do player
 
-if inst_60ADEB33.vivo == false{
+if global.player_dead_state{
 	desenharTelaGameOver()
 }
 	
