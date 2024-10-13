@@ -3,11 +3,7 @@
 
 
 
-desenharPausaMenu()
+//desenharPausaMenu()
 
 // Morte do player
 
-if global.player_dead_state{
-	desenharTelaGameOver()
-}
-	

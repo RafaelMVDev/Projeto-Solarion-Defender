@@ -9,6 +9,7 @@ pode_disparar = false
 
 
 function atirar_projetil(){
+	audio_play_sound(som_projetil,1,false)
 	instance_create_layer(inst_60ADEB33.x + 32, inst_60ADEB33.y - 80, "Projeteis", projetil_player)
 	//array_push(projeteis,_projetil)
 }

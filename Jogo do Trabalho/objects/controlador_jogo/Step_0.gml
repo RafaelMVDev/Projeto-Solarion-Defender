@@ -17,7 +17,7 @@ else{
 	// Pausar jogo
 	 if keyboard_check_pressed(ord("P")){
 		//show_debug_message("Usuário pausou")
-		jogoPausadoHandler()
+		//jogoPausadoHandler()
 	}
 	
 	else{

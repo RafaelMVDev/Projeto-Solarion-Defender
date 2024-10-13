@@ -12,8 +12,8 @@
   "name":"projetil_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Player e Inimigos",
+    "path":"folders/Objetos/Player e Inimigos.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -17,6 +17,7 @@ function handlePulo(){
 	{	
 		pulando = true
 		puloInitYPos = y
+		audio_play_sound(som_pulo,1,false)
 		vspeed -= 9
 	}
 	

@@ -6,10 +6,10 @@ randomize()
 
 // -- Variavéis globais --
 global.player_dead_state = false
+global.sala_atual = 0
+global.jogo_pausado = false
 
 tempo_atual = get_timer()
-jogo_pausado = false
-superficieId = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 telaMorte = false
 jogoRecomecou = false
 
@@ -52,60 +52,9 @@ function atualizar_clock(){
 	tempo_atual = get_timer()
 }
 
-// Pausar //
-function jogoPausadoHandler(){
-	controlador_jogo.jogo_pausado = !jogo_pausado
-	
-	if not(controlador_jogo.jogo_pausado){
-		instance_activate_all()
-		surface_free(superficieId)
-		superficieId = -1
-		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
-		show_debug_message( "Despausando timer: " + string(controlador_projetil.ultimo_disparo))
-	}
-	else {
-		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
-		show_debug_message( "Pausando timer: " + string(controlador_projetil.ultimo_disparo))
-		// Talvez seja util depois
-	}
-}
 
-// desenho do menu e detecção da mudança da var jogoPausado
-function desenharPausaMenu(){ 
-	
-		
-		if (controlador_jogo.jogo_pausado && global.player_dead_state == false)
-		{	
-			//alarm[0] ++
-			if !surface_exists(superficieId) // se a superficie não existir, a gente cria uma ( as vezes retorna false se o jogo tiver minimazado, por isso checamos abaixo o id da superficie )
-			{ 
-				if superficieId == -1 // signfica q a gente pode ir para o estado pausado (-1 = superficie ja foi limpada desde o ultimo pause )
-				{
-					instance_deactivate_all(true) // desativar todas as instancias na sala ( exceto a controlador_jogo obviamente )
-				}
-				
-				controlador_jogo.superficieId = surface_create(room_width, room_height) // inicializa a superficie com o tamanho da nossa sala
-				surface_set_target(controlador_jogo.superficieId) // todos os "desenhos" vão passar a ser feitos nessa superficie
-				draw_surface(application_surface,0,0) // desenha na superficie a application surface ( o que ta sendo desenhado no momento )
-				surface_reset_target() // Permite que a gente faça novos desenhos nessa superficie ( ver documentação )
-			}
-			else{
-				draw_surface(controlador_jogo.superficieId, 0, 0);
-				draw_set_alpha(0.5);
-				draw_rectangle_colour(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
-				draw_set_alpha(1);
-				draw_set_halign(fa_center);
-				draw_set_font(MenuFont)
-				draw_text_transformed_colour(view_wport / 2, view_hport / 2, "JOGO PAUSADO", 1, 1, 0, c_aqua, c_aqua, c_aqua, c_aqua, 1);
-				draw_set_halign(fa_left);
-			}
-		}
-	
-	
-}
 
 // Player Morreu 
-
 
 function desenharTelaGameOver(){
 	draw_set_font(GameOverFont)
@@ -129,6 +78,8 @@ function resetInimigos(){
 			show_debug_message("É diferente")
 			continue
 		}
+		
+		instance_destroy(inst)
 	
 		// MUDAR ISSO DEPOIS --> Destruir o inimigo e reespawnar ele
 
@@ -157,6 +108,7 @@ function playerMorreu(){
 		
 		var player = inst_60ADEB33 // mudar para uma função depois
 		player.y = 683
+		show_debug_message(player.y)
 		global.player_dead_state = false
 		//player.vivo = true
 		player.pulando = false
@@ -212,7 +164,7 @@ function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_colo
 			clone_obj.image_blend = _sprite_color
 		}
 		if _random_color{
-			var color = make_color_hsv(random(2), 255,200)
+			var color = make_color_hsv(random(255), 255,200)
 			clone_obj.image_blend = color
 		}
 	}
