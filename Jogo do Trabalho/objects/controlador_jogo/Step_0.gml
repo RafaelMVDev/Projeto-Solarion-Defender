@@ -4,13 +4,15 @@
 // atualizar tempo
 
 
-
+if global.player_vidas <= 0{
+	global.player_dead_state = true
+}
 
 // Player morreu
 if global.player_dead_state{
 	playerMorreu()
-	
 }
+
 else{
 	//show_debug_message("TEMPO ATUAL: " + string( tempo_atual))
 	//show_debug_message("TEMPO ULTIMO DISPARO: " + string(controlador_projetil.ultimo_disparo))

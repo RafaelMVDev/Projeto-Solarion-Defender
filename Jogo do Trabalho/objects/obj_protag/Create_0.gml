@@ -1,7 +1,7 @@
 vivo = true
 pulando = false
 tocandoChao = true
-vidas = 3
+global.player_vidas = 3
 
 
 audio_play_sound(level_music,0,true)

@@ -1,18 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_gameover_intro",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"ref_spawn_coracao",
+  "eventList":[],
   "managed":true,
-  "name":"obj_gameover_intro",
+  "name":"ref_spawn_coracao",
   "overriddenProperties":[],
   "parent":{
-    "name":"Interfaces",
-    "path":"folders/Objetos/Interfaces.yy",
+    "name":"Cenário",
+    "path":"folders/Objetos/Cenário.yy",
   },
   "parentObjectId":null,
-  "persistent":false,
+  "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -30,9 +28,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_gameover_intro",
-    "path":"sprites/spr_gameover_intro/spr_gameover_intro.yy",
+    "name":"spr_ref",
+    "path":"sprites/spr_ref/spr_ref.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

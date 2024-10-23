@@ -69,6 +69,7 @@
     {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},},
     {"id":{"name":"Object4","path":"objects/Object4/Object4.yy",},},
     {"id":{"name":"projetil_player","path":"objects/projetil_player/projetil_player.yy",},},
+    {"id":{"name":"ref_spawn_coracao","path":"objects/ref_spawn_coracao/ref_spawn_coracao.yy",},},
     {"id":{"name":"ref_spawn_player","path":"objects/ref_spawn_player/ref_spawn_player.yy",},},
     {"id":{"name":"Sair","path":"objects/Sair/Sair.yy",},},
     {"id":{"name":"texto_ajuda","path":"objects/texto_ajuda/texto_ajuda.yy",},},
@@ -116,8 +117,8 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"menu","path":"rooms/menu/menu.yy",},},
     {"roomId":{"name":"Gameplay","path":"rooms/Gameplay/Gameplay.yy",},},
-    {"roomId":{"name":"menu_ajuda","path":"rooms/menu_ajuda/menu_ajuda.yy",},},
     {"roomId":{"name":"GameOver","path":"rooms/GameOver/GameOver.yy",},},
+    {"roomId":{"name":"menu_ajuda","path":"rooms/menu_ajuda/menu_ajuda.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

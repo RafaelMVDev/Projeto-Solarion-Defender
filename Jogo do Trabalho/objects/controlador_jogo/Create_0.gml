@@ -2,16 +2,24 @@
 
 randomize()
 
-// Variaveis para controle do pause do jogo
+// -- Constantes -- //
+
+esperar_game_over = 2.5 // tempo ocioso até ir pra sala da game over
+alarme_ativado = false // debounce para prevenir o alarme de ser ativado continuamente
 
 // -- Variavéis globais --
 global.player_dead_state = false
 global.sala_atual = 0
 global.jogo_pausado = false
+global.vidas_restantes = 3
 
 tempo_atual = get_timer()
 telaMorte = false
 jogoRecomecou = false
+
+// --- Vidas --- //
+
+scale_coracoes = 2.5 //quantas vezes preciso aumentar o sprite original ( ficar maior o coracao na gameplay)
 
 // --- ESTATISTICAS PLAYER ---- //
 
@@ -45,6 +53,75 @@ inimigo_simples_escala = 2.9375 // tamanho
 
 INIMIGOS_DEFAULT_Y = 683
 
+
+// -- FUNÇÕES -- //
+
+
+function criar_ui_coracao(quantidade){
+	var pos_x,pos_y = 0
+	var layer_vidas = layer_get_id("Vidas")
+	
+	
+	if not(layer_vidas) exit
+	show_debug_message("TEM A CAMADA")
+	show_debug_message(string(quantidade))
+	
+	
+	for (c = 0;c < quantidade; c++){
+		//show_debug_message("i: " + string(c)+ "; quantidade: " + string(quantidade))
+		//show_debug_message("TA INDO")
+		//show_debug_message(string(i))
+		var vidas = layer_get_all_elements(layer_vidas)
+		var quant_vidas = array_length(vidas)
+		if quant_vidas >= 1 { // significa q a camada não ta vazia ( tem um instancia de coracao )
+			show_debug_message("Gente tem corações")
+			show_debug_message("Quant vidas : " + string(quant_vidas) + " Array: " + string(vidas))
+			var ultimo_coracao = layer_instance_get_instance(vidas[0])
+			if ultimo_coracao{
+				var pos_x = (ultimo_coracao.x + ultimo_coracao.sprite_width / 2) + 50
+				var pos_y = ultimo_coracao.y
+			}
+			
+		}
+		else{
+			show_debug_message("Gente não achou coracoes")
+			//show_debug_message(string(array_length(coracoes)))
+			var layer_referencias = layer_get_id("Referencias")
+			if layer_referencias{
+				var referencias = layer_get_all_elements(layer_referencias)
+				for (i = 0; i < array_length(referencias); i++)
+				{	
+					
+					var element = layer_instance_get_instance(referencias[i])
+					if element
+					{
+						if element.object_index == ref_spawn_coracao
+						{
+							var pos_x = element.x
+							var pos_y = element.y
+						}
+					 }
+				}
+			}
+		}
+		novo_coracao = instance_create_layer(pos_x,pos_y,layer_vidas,obj_vida)
+		novo_coracao.image_xscale = scale_coracoes
+		novo_coracao.image_yscale = scale_coracoes
+		//novo_coracao = instance_create_layer()
+	}
+}
+
+function remover_ui_coracao(){
+	var layer_vidas = layer_get_id("Vidas")
+	if not(layer_vidas) exit
+	var coracoes = layer_get_all_elements(layer_vidas)
+	if array_length(coracoes) >= 1 {
+		show_debug_message("Removendo coracao")
+		show_debug_message(string(coracoes))
+		
+		instance_destroy(layer_instance_get_instance(coracoes[0])) // a posicao 0 corresponde à ultima instancia adicionada na camada (coração)
+	}
+}
 
 // Atualizar relogio do jogo
 
@@ -95,6 +172,14 @@ function playerMorreu(){
 	
 	inst_60ADEB33.vspeed = 0 
 	audio_stop_sound(level_music)
+	var background_layer = layer_get_id("Background")
+	layer_hspeed(background_layer,0)
+	if !alarme_ativado {
+		alarm[0] = game_get_speed(gamespeed_fps) * esperar_game_over
+		alarme_ativado = true
+	}
+	show_debug_message(string(alarm))
+	
 	
 	//show_debug_message("Player Morreu")
 	
@@ -180,3 +265,7 @@ function selec_inimigo_aleatorio(){
 	//show_debug_message(string("Inimigo tipo: " + string(n_aleatorio)))
 	return  tipos_inimigos[n_aleatorio]
 }
+
+// Criando corações pro player
+show_debug_message("Chamando criar coracao")
+criar_ui_coracao(3)

@@ -46,6 +46,7 @@
     {"name":"Object1","order":7,"path":"objects/Object1/Object1.yy",},
     {"name":"Object4","order":3,"path":"objects/Object4/Object4.yy",},
     {"name":"projetil_player","order":3,"path":"objects/projetil_player/projetil_player.yy",},
+    {"name":"ref_spawn_coracao","order":4,"path":"objects/ref_spawn_coracao/ref_spawn_coracao.yy",},
     {"name":"ref_spawn_player","order":1,"path":"objects/ref_spawn_player/ref_spawn_player.yy",},
     {"name":"Sair","order":3,"path":"objects/Sair/Sair.yy",},
     {"name":"texto_ajuda","order":4,"path":"objects/texto_ajuda/texto_ajuda.yy",},
