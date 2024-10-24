@@ -12,8 +12,8 @@
   "duration":97.044876,
   "name":"game_over",
   "parent":{
-    "name":"Sons",
-    "path":"folders/Sons.yy",
+    "name":"Musicas",
+    "path":"folders/Sons/Musicas.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

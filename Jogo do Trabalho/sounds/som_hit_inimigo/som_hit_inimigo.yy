@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"som_hit_inimigo.wav",
   "type":0,
-  "volume":0.8,
+  "volume":0.5,
 }
