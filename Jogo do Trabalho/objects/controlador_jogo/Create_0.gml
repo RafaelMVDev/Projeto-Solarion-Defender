@@ -51,7 +51,7 @@ tempo_entre_inim_spawns = 2.5 // 2.5 segundos
 
 inimigo_simples_escala = 2.9375 // tamanho
 
-INIMIGOS_DEFAULT_Y = 627
+INIMIGOS_DEFAULT_Y = 600
 
 
 // -- FUNÇÕES -- //
@@ -171,9 +171,16 @@ function resetInimigos(){
 function playerMorreu(){
 	
 	inst_60ADEB33.vspeed = 0 
+	inst_60ADEB33.image_speed = 0
 	audio_stop_sound(level_music)
+	
 	var background_layer = layer_get_id("Background")
+	var chao_layer = layer_get_id("Chao")
+	var montanhas_layer = layer_get_id("Montanhas")
 	layer_hspeed(background_layer,0)
+	layer_hspeed(chao_layer,0)
+	layer_hspeed(montanhas_layer,0)
+	
 	if !alarme_ativado {
 		alarm[0] = game_get_speed(gamespeed_fps) * esperar_game_over
 		alarme_ativado = true
@@ -220,18 +227,19 @@ function aumentarScorePlayer(quantidade,tipo){
 
 function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_color){
 	
-	if (_sprite_color == undefined) _sprite_color = false
+	if (_sprite_color == undefined) _sprite_color = false // valores padrões para esses argumentos
 	if (_random_color == undefined) _random_color = false
 	
-	var inimigo = objetos_inimigos[$ tipo_inimigo]
+	var inimigo = objetos_inimigos[$ tipo_inimigo] // checa se o tipo passado está no dicionário
 
 
-	if inimigo {
+	if inimigo { // caso seja um inimigo válido:
 		
-		var inimigo_obj = objetos_inimigos[$ tipo_inimigo]._obj
-		//show_debug_message(string(inimigo_obj))
-		var _scale = inimigo._scale
-		if pos_x == "automatico"{
+		var inimigo_obj = objetos_inimigos[$ tipo_inimigo]._obj // acessa o objeto do inimigo
+	
+		var _scale = inimigo._scale // acessa a scala ( pra redimensionar o tamanho do inimigo )
+		
+		if pos_x == "automatico"{ 
 			pos_x = view_wport + sprite_get_width( object_get_sprite(inimigo_obj)) * _scale
 		}
 		
@@ -239,24 +247,20 @@ function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_colo
 			pos_y = INIMIGOS_DEFAULT_Y
 		}
 		
-		//show_debug_message("ACHO O INIMIGO" + object_get_name(inimigo_obj))
-		var clone_obj = instance_create_layer(pos_x,pos_y,"Inimigos",inimigo_obj)
+		var clone_obj = instance_create_layer(pos_x,pos_y,"Inimigos",inimigo_obj) // cria o inimigo
 		clone_obj.image_xscale = _scale
 		clone_obj.image_yscale = _scale
 		clone_obj.y = pos_y
-		//show_debug_message("Clone at y: " + string(clone_obj.y))
+		
 		if _sprite_color{
-			clone_obj.image_blend = _sprite_color
+			clone_obj.image_blend = _sprite_color 
 		}
+		
 		if _random_color{
 			var color = make_color_hsv(random(255), 255,200)
 			clone_obj.image_blend = color
 		}
 	}
-	else{
-		show_debug_message("Num tem")
-	}
-	
 }
 
 function selec_inimigo_aleatorio(){

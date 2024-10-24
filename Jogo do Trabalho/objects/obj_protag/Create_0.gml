@@ -19,12 +19,14 @@ function handlePulo(){
 		puloInitYPos = y
 		audio_play_sound(som_pulo,1,false)
 		vspeed -= 9
+		self.image_index = 1
 	}
 	
 	else{
 		
 		if abs( ( y - puloInitYPos )) > ALTURA_MAX_PULO{
 			vspeed += 0.25
+			self.image_index = 1
 		}
 	
 	}

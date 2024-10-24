@@ -21,7 +21,8 @@ function perderVida(){
 	
 	else if global.player_vidas == 1{
 		controlador_jogo.remover_ui_coracao()
-		instance_destroy(self)
+		//instance_destroy(self)
+		draw_sprite(spr_prot_morte,image_index,inst_60ADEB33.x, inst_60ADEB33.y) 
 		global.player_vidas = global.player_vidas - 1
 		somDano()
 	}
