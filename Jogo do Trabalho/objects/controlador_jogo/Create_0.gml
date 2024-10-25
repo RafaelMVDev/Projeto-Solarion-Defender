@@ -6,6 +6,7 @@ randomize()
 
 esperar_game_over = 2.5 // tempo ocioso até ir pra sala da game over
 alarme_ativado = false // debounce para prevenir o alarme de ser ativado continuamente
+game_over_desenhado = false
 
 // -- Variavéis globais --
 global.player_dead_state = false

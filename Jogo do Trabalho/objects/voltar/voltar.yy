@@ -12,7 +12,10 @@
     "name":"objetos_menu",
     "path":"folders/Objetos/Interfaces/objetos_menu.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"button_parent",
+    "path":"objects/button_parent/button_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

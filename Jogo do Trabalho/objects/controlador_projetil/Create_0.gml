@@ -1,7 +1,7 @@
         /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-tempo_entre_disparos = 0.5 // 0.5 segundo
+tempo_entre_disparos = 1 // 0.5 segundo
 ultimo_disparo = get_timer()
 pode_disparar = false
 //projeteis = []

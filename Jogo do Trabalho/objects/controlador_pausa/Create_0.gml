@@ -4,7 +4,8 @@
 
 superficie_id = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 nao_desativar = {
-	cont_cooldown: controlador_cooldowns
+	cont_cooldown: controlador_cooldowns,
+	obj_vidas: obj_vida
 }
 
 function jogoPausadoHandler(){
@@ -13,7 +14,6 @@ function jogoPausadoHandler(){
 	if not(global.jogo_pausado) && global.player_dead_state == false{
 		instance_activate_all()
 		surface_free(superficie_id)
-		instance_deactivate_object(inst_88268D2)
 		superficie_id = -1
 		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
 		show_debug_message( "Despausando timer: " + string(controlador_projetil.ultimo_disparo))
@@ -38,6 +38,10 @@ function desenharPausaMenu(){
 				{	
 					
 					instance_deactivate_all(true) // desativar todas as instancias na sala ( exceto a controlador_jogo obviamente )
+					for (i = 0; i < struct_names_count(nao_desativar); i++){
+						//TRABALHAR
+					}
+					
 				}
 				
 				superficie_id = surface_create(room_width, room_height) // inicializa a superficie com o tamanho da nossa sala
@@ -52,12 +56,12 @@ function desenharPausaMenu(){
 				draw_rectangle_colour(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 				draw_set_alpha(1);
 				draw_set_halign(fa_center);
-				draw_set_font(MenuFont)
+				draw_set_font(MainFont)
 				draw_text_transformed_colour(view_wport / 2, view_hport / 2, "JOGO PAUSADO", 1, 1, 0, c_aqua, c_aqua, c_aqua, c_aqua, 1);
 				
 				instance_activate_object(voltar_menu)
 				if instance_exists(inst_88268D2) { // botão de voltar ao menu
-					draw_set_font(GameOverFont)
+					draw_set_font(MainFont)
 					draw_set_halign(fa_center)
 					draw_set_valign(fa_middle)
 					
