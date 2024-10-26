@@ -37,7 +37,9 @@
     {"$GMFolder":"","%Name":"sprites_interfaces","folderPath":"folders/Sprites/sprites_interfaces.yy","name":"sprites_interfaces","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprites_menu","folderPath":"folders/Sprites/sprites_interfaces/sprites_menu.yy","name":"sprites_menu","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"vamolaent.jfif","CopyToMask":-1,"filePath":"datafiles","name":"vamolaent.jfif","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -63,6 +65,7 @@
     {"id":{"name":"Obj_enemy","path":"objects/Obj_enemy/Obj_enemy.yy",},},
     {"id":{"name":"obj_gameover_intro","path":"objects/obj_gameover_intro/obj_gameover_intro.yy",},},
     {"id":{"name":"obj_obstac","path":"objects/obj_obstac/obj_obstac.yy",},},
+    {"id":{"name":"obj_protag_morte","path":"objects/obj_protag_morte/obj_protag_morte.yy",},},
     {"id":{"name":"obj_protag","path":"objects/obj_protag/obj_protag.yy",},},
     {"id":{"name":"obj_rastejador","path":"objects/obj_rastejador/obj_rastejador.yy",},},
     {"id":{"name":"obj_vida","path":"objects/obj_vida/obj_vida.yy",},},
@@ -105,6 +108,7 @@
     {"id":{"name":"spr_mont","path":"sprites/spr_mont/spr_mont.yy",},},
     {"id":{"name":"spr_obstac","path":"sprites/spr_obstac/spr_obstac.yy",},},
     {"id":{"name":"spr_prot_morte","path":"sprites/spr_prot_morte/spr_prot_morte.yy",},},
+    {"id":{"name":"spr_prot_morte2","path":"sprites/spr_prot_morte2/spr_prot_morte2.yy",},},
     {"id":{"name":"spr_protag","path":"sprites/spr_protag/spr_protag.yy",},},
     {"id":{"name":"spr_rastejador","path":"sprites/spr_rastejador/spr_rastejador.yy",},},
     {"id":{"name":"spr_ref","path":"sprites/spr_ref/spr_ref.yy",},},
@@ -120,9 +124,9 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"Gameplay","path":"rooms/Gameplay/Gameplay.yy",},},
     {"roomId":{"name":"menu","path":"rooms/menu/menu.yy",},},
     {"roomId":{"name":"menu_ajuda","path":"rooms/menu_ajuda/menu_ajuda.yy",},},
-    {"roomId":{"name":"Gameplay","path":"rooms/Gameplay/Gameplay.yy",},},
     {"roomId":{"name":"GameOver","path":"rooms/GameOver/GameOver.yy",},},
   ],
   "templateType":"game",

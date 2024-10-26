@@ -19,6 +19,6 @@ if keyboard_check_pressed(vk_escape){
 }
 
 if inst_418F75D6.image_index == quant_sprites{
-	show_debug_message("ÉEEEEEE")
+	
 	inst_418F75D6.image_speed = 0
 }

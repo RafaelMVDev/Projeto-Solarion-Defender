@@ -58,16 +58,19 @@ INIMIGOS_DEFAULT_Y = 600
 // -- FUNÇÕES -- //
 
 
+
+
 function criar_ui_coracao(quantidade){
 	var pos_x,pos_y = 0
+
+	if !layer_exists("Vidas"){
+		show_debug_message("Sem coração")
+		alarm[1] = game_get_speed(gamespeed_fps) * 2
+		exit
+	}
+	
 	var layer_vidas = layer_get_id("Vidas")
-	
-	
-	if not(layer_vidas) exit
-	show_debug_message("TEM A CAMADA")
-	show_debug_message(string(quantidade))
-	
-	
+
 	for (c = 0;c < quantidade; c++){
 		//show_debug_message("i: " + string(c)+ "; quantidade: " + string(quantidade))
 		//show_debug_message("TA INDO")
@@ -75,8 +78,7 @@ function criar_ui_coracao(quantidade){
 		var vidas = layer_get_all_elements(layer_vidas)
 		var quant_vidas = array_length(vidas)
 		if quant_vidas >= 1 { // significa q a camada não ta vazia ( tem um instancia de coracao )
-			show_debug_message("Gente tem corações")
-			show_debug_message("Quant vidas : " + string(quant_vidas) + " Array: " + string(vidas))
+			
 			var ultimo_coracao = layer_instance_get_instance(vidas[0])
 			if ultimo_coracao{
 				var pos_x = (ultimo_coracao.x + ultimo_coracao.sprite_width / 2) + 50
@@ -85,7 +87,7 @@ function criar_ui_coracao(quantidade){
 			
 		}
 		else{
-			show_debug_message("Gente não achou coracoes")
+			
 			//show_debug_message(string(array_length(coracoes)))
 			var layer_referencias = layer_get_id("Referencias")
 			if layer_referencias{
@@ -112,13 +114,15 @@ function criar_ui_coracao(quantidade){
 	}
 }
 
+
+
+
 function remover_ui_coracao(){
+
+	if !layer_exists("Vidas") exit
 	var layer_vidas = layer_get_id("Vidas")
-	if not(layer_vidas) exit
 	var coracoes = layer_get_all_elements(layer_vidas)
 	if array_length(coracoes) >= 1 {
-		show_debug_message("Removendo coracao")
-		show_debug_message(string(coracoes))
 		
 		instance_destroy(layer_instance_get_instance(coracoes[0])) // a posicao 0 corresponde à ultima instancia adicionada na camada (coração)
 	}
@@ -145,8 +149,6 @@ function resetInimigos(){
 
 	var inimigos_layer_id = layer_get_id("Inimigos")
 	var inimigos = layer_get_all_elements(inimigos_layer_id)
-	
-	show_debug_message("Instances in layer: " + string(inimigos))
 	
 	for (i = 0; i < array_length(inimigos); i++;)
 	{
@@ -181,12 +183,13 @@ function playerMorreu(){
 	layer_hspeed(background_layer,0)
 	layer_hspeed(chao_layer,0)
 	layer_hspeed(montanhas_layer,0)
-	
+	if !game_over_desenhado{
+		anim_morte_player()
+	}
 	if !alarme_ativado {
 		alarm[0] = game_get_speed(gamespeed_fps) * esperar_game_over
 		alarme_ativado = true
 	}
-	show_debug_message(string(alarm))
 	
 	
 	//show_debug_message("Player Morreu")
@@ -201,7 +204,6 @@ function playerMorreu(){
 		
 		var player = inst_60ADEB33 // mudar para uma função depois
 		player.y = 683
-		show_debug_message(player.y)
 		global.player_dead_state = false
 		//player.vivo = true
 		player.pulando = false
@@ -263,6 +265,20 @@ function spawnar_inimigo(tipo_inimigo, pos_x, pos_y, _sprite_color, _random_colo
 		}
 	}
 }
+
+
+function anim_morte_player(){
+	game_over_desenhado = true
+
+	//draw_sprite_ext
+	inst_60ADEB33.image_speed = 0
+	inst_60ADEB33.image_index = 0
+	inst_60ADEB33.image_alpha = 0
+	var inst = instance_create_layer(inst_60ADEB33.x, inst_60ADEB33.y, layer_get_id("Player"),obj_protag_morte)
+	show_debug_message("TEM TUDO ISSO DE PLAYERS IH ALALDASD")
+}
+
+
 
 function selec_inimigo_aleatorio(){
 	var quant_inimigos = array_length(tipos_inimigos)
