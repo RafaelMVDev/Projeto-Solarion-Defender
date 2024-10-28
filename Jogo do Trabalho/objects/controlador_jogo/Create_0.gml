@@ -32,15 +32,16 @@ tempo_debounce_score = 100000 // em microsegundos ==
 
 // --- INIMIGOS ---- 
 
+//scale original 2.983
 
 objetos_inimigos = {
 	inimigo_simples : {
 		_obj : obj_obstac,
-		_scale : 2.983
+		_scale : 4
 	},
 	inimigo_desviar : {
 		_obj: obj_rastejador,
-		_scale:2.983
+		_scale: 4
 	}
 }
 
