@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":27.480791,
+  "duration":54.93551,
   "name":"level_music",
   "parent":{
     "name":"Musicas",
@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"level_music.mp3",
   "type":0,
-  "volume":0.87,
+  "volume":1.0,
 }
