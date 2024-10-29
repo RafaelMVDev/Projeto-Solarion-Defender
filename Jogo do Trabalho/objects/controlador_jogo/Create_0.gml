@@ -42,10 +42,14 @@ objetos_inimigos = {
 	inimigo_desviar : {
 		_obj: obj_rastejador,
 		_scale: 4
-	}
+	},
+	inimigo_alto : {
+		_obj : obj_obstac_alto,
+		_scale : 4
+	},
 }
 
-tipos_inimigos =[ "inimigo_simples", "inimigo_desviar"]
+tipos_inimigos =[ "inimigo_simples", "inimigo_desviar","inimigo_alto"]
 
 //spawn_ultimo_inimigo = get_timer()
 spawn_inimigo_permitido = false

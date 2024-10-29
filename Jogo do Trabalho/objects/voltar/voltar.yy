@@ -7,7 +7,9 @@
   ],
   "managed":true,
   "name":"voltar",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"button_parent","path":"objects/button_parent/button_parent.yy",},"propertyId":{"name":"texto","path":"objects/button_parent/button_parent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"<",},
+  ],
   "parent":{
     "name":"objetos_menu",
     "path":"folders/Objetos/Interfaces/objetos_menu.yy",

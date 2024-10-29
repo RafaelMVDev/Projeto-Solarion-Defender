@@ -4,5 +4,7 @@
 // Inherit the parent event
 event_inherited();
 
-room_goto(Gameplay)
+//audio_stop_all()
+//room_goto(Gameplay)
 
+activate_fade_out()

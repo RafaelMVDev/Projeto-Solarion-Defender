@@ -4,7 +4,7 @@
 // Inherit the parent event
 event_inherited();
 
-room_goto(menu_ajuda)
+room_goto(menu_ajuda1)
 
 
 

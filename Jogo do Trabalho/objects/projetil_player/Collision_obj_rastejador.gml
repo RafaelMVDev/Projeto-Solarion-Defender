@@ -2,9 +2,11 @@
 // Você pode escrever seu código neste editor
 
 //if !desativado{
-	desativado = true
-	controlador_jogo.inimigos_derrotados += 1
+	//desativado = true
+
 	audio_play_sound(som_hit_inimigo,1,false)
+	other.perderVida()
+	
 	instance_destroy(self)
 	other.vivo = false 
 	//self

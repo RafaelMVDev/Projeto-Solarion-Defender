@@ -20,7 +20,7 @@
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"444386dc-cb4b-4dd6-af87-ee357c5de1a9","blendMode":0,"displayName":"default","isLocked":false,"name":"444386dc-cb4b-4dd6-af87-ee357c5de1a9","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
-    {"$GMImageLayer":"","%Name":"5a3805f1-41cf-4f3b-83ce-52d3cde1221e","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"5a3805f1-41cf-4f3b-83ce-52d3cde1221e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
+    {"$GMImageLayer":"","%Name":"5a3805f1-41cf-4f3b-83ce-52d3cde1221e","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"5a3805f1-41cf-4f3b-83ce-52d3cde1221e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"Sprite24",
   "nineSlice":null,

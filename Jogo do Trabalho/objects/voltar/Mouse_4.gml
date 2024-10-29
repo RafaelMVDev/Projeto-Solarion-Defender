@@ -1,3 +1,10 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-room_goto(menu)
+
+// Inherit the parent event
+event_inherited();
+
+room_goto_previous()
+
+
+
