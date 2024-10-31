@@ -1,50 +1,38 @@
-/// @description Inserir descrição aqui
-// Você pode escrever seu código neste editor
+/// @description Atualizar estado do jogo
 
-// atualizar tempo
-
-
-if global.player_vidas <= 0{
-	global.player_dead_state = true
+// Checa se a vida do player chegou à 0
+if global.player_vidas <= 0
+{ 
+	global.player_dead_state = true;
 }
 
-// Player morreu
-if global.player_dead_state{
-	playerMorreu()
+// Ativar funções de game over caso o player tenha morrido, caso contrário a gameplay ainda ta rolando
+if global.player_dead_state
+{
+	player_morreu();
 }
 
-else{
-	//show_debug_message("TEMPO ATUAL: " + string( tempo_atual))
-	//show_debug_message("TEMPO ULTIMO DISPARO: " + string(controlador_projetil.ultimo_disparo))
-	// Pausar jogo
-	 if keyboard_check_pressed(ord("P")){
-		//show_debug_message("Usuário pausou")
-		//jogoPausadoHandler()
-	}
-	
-	else{
-		//atualizar_clock() // atualizar o tempo do jogo ( para cooldowns, etc)
+else
+{
+	// Se o jogo não estiver pausado, executar a gameplay normalmente
+	if !global.jogo_pausado
+	{ 
 		// -- Score -- //
-		aumentarScorePlayer(1,"Etapa")
-	
+		aumentar_score_player(1,"Etapa")
+		
 		// -- Spawn Inimigos -- //
-		if spawn_inimigo_permitido
+		if spawn_inimigo_permitido // Varivavél para controlar o spawn de inimigos
 		{	
 			spawn_inimigo_permitido = false
-			//spawn_ultimo_inimigo = get_timer()
-			//show_debug_message("Spawnando inimigo!")
 			var inim_aleatorio = selec_inimigo_aleatorio()
 			//show_debug_message("Inim aleatorio: " + object_get_name(objetos_inimigos[$ inim_aleatorio]._obj))
 			spawnar_inimigo(inim_aleatorio, "automatico", "automatico",false,true)
 		}
-	}
-	
-	
+		
+	 }
 }
 
 
-// Spawn de Inimigos SIMPLES
 
-// Score
 
 

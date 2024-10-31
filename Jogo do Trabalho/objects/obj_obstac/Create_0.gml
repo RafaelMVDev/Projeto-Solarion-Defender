@@ -1,3 +1,11 @@
+image_xscale = image_xscale + (image_xscale * global.var_aspect_ratio_x)
+image_yscale = image_xscale + (image_xscale * global.var_aspect_ratio_y)
+
+x = x + (x * global.var_aspect_ratio_x)
+y = y + (y * global.var_aspect_ratio_y)
+
+show_debug_message("Ratio x: " + string(global.var_aspect_ratio_x))
+show_debug_message("Ratio y: " + string(global.var_aspect_ratio_y))
 vivo = true
 tocouPlayer = false
 

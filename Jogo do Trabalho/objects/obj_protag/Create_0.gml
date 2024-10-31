@@ -1,3 +1,11 @@
+image_xscale = image_xscale + (1 * global.var_aspect_ratio_x)
+image_yscale = image_yscale + (1 * global.var_aspect_ratio_y)
+
+x = x + (x * global.var_aspect_ratio_x)
+y = y + (y * global.var_aspect_ratio_y)
+
+
+
 vivo = true
 pulando = false
 tocandoChao = true

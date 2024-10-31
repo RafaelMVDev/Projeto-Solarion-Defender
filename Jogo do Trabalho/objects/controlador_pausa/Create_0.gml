@@ -2,6 +2,9 @@
 // Você pode escrever seu código neste editor
 // Pausar //
 
+
+global.jogo_pausado = false; 
+
 superficie_id = -1 //Pra fazer a tela de pause, a gente vai precisar usar uma superficie
 nao_desativar = {
 	cont_cooldown: controlador_cooldowns,
@@ -58,23 +61,10 @@ function desenharPausaMenu(){
 				draw_set_halign(fa_center);
 				draw_set_font(MainFont)
 				draw_text_transformed_colour(view_wport / 2, view_hport / 2, "JOGO PAUSADO", 1, 1, 0, c_aqua, c_aqua, c_aqua, c_aqua, 1);
+				draw_text_transformed_colour(view_wport / 2, (view_hport / 2) + 50, "M - Voltar ao menu", 0.8, 0.8, 0, c_white, c_white, c_white, c_white, 1);
 				
-				instance_activate_object(voltar_menu)
-				if instance_exists(inst_88268D2) { // botão de voltar ao menu
-					draw_set_font(MainFont)
-					draw_set_halign(fa_center)
-					draw_set_valign(fa_middle)
-					
-					inst_88268D2.x = view_wport / 2 
-					inst_88268D2.y = view_hport / 2 
-					draw_text_transformed(inst_88268D2.x/2,inst_88268D2.y/2,"Voltar ao Menu", 0.2,0.2,0)
-					show_debug_message("EXISTE SIM FDPSPDPAPDA")
-
-				}
-				else{
-					show_debug_message("NAO EXISTE VIADOO")
-				}
-
+				
+			
 				draw_set_halign(fa_left);
 			}
 		}
