@@ -22,6 +22,7 @@ function jogoPausadoHandler(){
 		show_debug_message( "Despausando timer: " + string(controlador_projetil.ultimo_disparo))
 	}
 	else {
+		
 		//controlador_projetil.ultimo_disparo = tempo_atual - controlador_projetil.ultimo_disparo
 		show_debug_message( "Pausando timer: " + string(controlador_projetil.ultimo_disparo))
 		// Talvez seja util depois
@@ -34,16 +35,20 @@ function desenharPausaMenu(){
 		
 		if (global.jogo_pausado && global.player_dead_state == false)
 		{	
+			if keyboard_check_pressed(ord("M")){
+				audio_stop_all()
+				room_goto(menu)
+			}
+
 			//alarm[0] ++
 			if !surface_exists(superficie_id) // se a superficie não existir, a gente cria uma ( as vezes retorna false se o jogo tiver minimazado, por isso checamos abaixo o id da superficie )
 			{ 
 				if superficie_id == -1 // signfica q a gente pode ir para o estado pausado (-1 = superficie ja foi limpada desde o ultimo pause )
 				{	
 					
-					instance_deactivate_all(true) // desativar todas as instancias na sala ( exceto a controlador_jogo obviamente )
-					for (i = 0; i < struct_names_count(nao_desativar); i++){
-						//TRABALHAR
-					}
+					instance_deactivate_all(true)// desativar todas as instancias na sala ( exceto a controlador_jogo obviamente )
+					instance_activate_object(controlador_jogo)
+					instance_activate_object(full_screen)
 					
 				}
 				

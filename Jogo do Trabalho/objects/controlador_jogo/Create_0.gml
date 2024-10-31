@@ -21,8 +21,8 @@ jogoRecomecou = false;
 
 // --- VIDAS --- //
 
-scalex_coracoes = 2.5 + global.var_aspect_ratio_x; //quantas vezes preciso aumentar o sprite original ( ficar maior o coracao na gameplay)
-scaley_coracoes = 2.5 + global.var_aspect_ratio_y;
+scalex_coracoes = 2.5// + global.var_aspect_ratio_x; //quantas vezes preciso aumentar o sprite original ( ficar maior o coracao na gameplay)
+scaley_coracoes = 2.5// + global.var_aspect_ratio_y;
 
 // --- ESTATÍSTICAS PLAYER ---- //
 

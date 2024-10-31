@@ -1,20 +1,20 @@
 if keyboard_check_pressed(vk_enter){
-	audio_stop_sound(game_over)
-	room_goto(Gameplay)
+	audio_stop_all()
+	room_goto(menu)
 }
 
 if keyboard_check_pressed(vk_space){
-	audio_stop_sound(game_over)
-	room_goto(Gameplay)
+	audio_stop_all()
+	room_goto(menu)
 }
 
 if keyboard_check_pressed(vk_backspace){
-	audio_stop_sound(game_over)
+	audio_stop_all()
 	room_goto(menu)
 }
 
 if keyboard_check_pressed(vk_escape){
-	audio_stop_sound(game_over)
+	audio_stop_all()
 	room_goto(menu)
 }
 

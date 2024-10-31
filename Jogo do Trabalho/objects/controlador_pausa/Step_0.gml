@@ -5,3 +5,5 @@ if keyboard_check_pressed(ord("P")){
 		show_debug_message("OIOIOIOIOIOIOIOIIO")
 		jogoPausadoHandler()
 }
+
+
