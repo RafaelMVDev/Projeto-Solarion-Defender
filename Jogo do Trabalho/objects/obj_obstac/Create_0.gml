@@ -9,7 +9,8 @@
 vivo = true
 tocouPlayer = false
 
-
+hspeed = -5
+hspeed_inicial = hspeed
 // Vidas
 
 function perderVida(){

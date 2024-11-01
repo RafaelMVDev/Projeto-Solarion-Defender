@@ -16,9 +16,13 @@ else
 {
 	// Se o jogo não estiver pausado, executar a gameplay normalmente
 	if !global.jogo_pausado
-	{ 
+	{	
+		// -- Velocidade da fase -- // 
+		
 		// -- Score -- //
 		aumentar_score_player(1,"Etapa")
+		handle_aumento_velocidade()
+		
 		
 		// -- Spawn Inimigos -- //
 		if spawn_inimigo_permitido // Varivavél para controlar o spawn de inimigos

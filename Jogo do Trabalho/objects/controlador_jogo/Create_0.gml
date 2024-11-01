@@ -8,21 +8,27 @@ esperar_game_over = 2.5; // tempo ocioso até ir pra sala da game over
 alarme_ativado = false; // debounce para prevenir o alarme de ser ativado continuamente
 game_over_desenhado = false;
 
-// -- Variavéis globais -- // 
+// -- VARIAVÉIS GLOBAIS -- // 
 
 global.player_dead_state = false; // Controlar estado do player
 global.sala_atual = 0; // Usado?
 global.vidas_restantes = 3; // Vidas do player
+global.velocidade_fase = 0; // soma ao speed padrão dos objetos para aumentar a velocidade
 
 
-//tempo_atual = get_timer() /
-//telaMorte = false
-jogoRecomecou = false;
+// -- CONTROLE DA VELOCIDADE DA FASE -- // 
+
+AUMENTO_VELOCIDADE = 3; // O quanto a velocidade deve ser aumentada 
+VELOCIDADE_MAXIMA = 5; // Máximo de aumento de speed que se pode ter
+
+intervalo_aumento = 200; // Aumentar a velocidade a cada 300 pontos
+aumentar_velocidade = false; // Na etapa, vai controlar quando a velocidade deve ser aumentarda
+score_desde_aumento = 0;  // Guarda em que o score a velocidade foi aumentada para comparação
 
 // --- VIDAS --- //
 
-scalex_coracoes = 2.5// + global.var_aspect_ratio_x; //quantas vezes preciso aumentar o sprite original ( ficar maior o coracao na gameplay)
-scaley_coracoes = 2.5// + global.var_aspect_ratio_y;
+scalex_coracoes = 2.5;  //quantas vezes preciso aumentar o sprite original ( ficar maior o coracao na gameplay)
+scaley_coracoes = 2.5;
 
 // --- ESTATÍSTICAS PLAYER ---- //
 
@@ -34,7 +40,7 @@ tempo_debounce_score = 100000 // Em microsegundos
 
 // --- INIMIGOS ---- //
 
-//spawn_ultimo_inimigo = get_timer()
+
 spawn_inimigo_permitido = false // 
 tempo_entre_inim_spawns = 2.5 // 2.5 segundos 
 
@@ -79,44 +85,44 @@ function criar_ui_coracao(quantidade){
 	var pos_x,pos_y = 0 // Variavél para guardar a posição dos corações
 
 	if !layer_exists("Vidas"){ // Checa se a camada onde os corações serão colocados existe
-		show_debug_message("Sem coração") // Debug
-		alarm[1] = game_get_speed(gamespeed_fps) * 2 // Se a camada não existir, ativa um alarme para tentar novamente
-		exit
+		show_debug_message("Sem coração"); // Debug
+		alarm[1] = game_get_speed(gamespeed_fps) * 2; // Se a camada não existir, ativa um alarme para tentar novamente
+		exit;
 	}
 	
-	var layer_vidas = layer_get_id("Vidas") 
+	var layer_vidas = layer_get_id("Vidas"); 
 
 	for (c = 0;c < quantidade; c++){ // Loop para começar a criar os corações ( 0 até quantidade )
 	
-		var vidas = layer_get_all_elements(layer_vidas) // Pega todos os corações já existentes na camada de vida
-		var quant_vidas = array_length(vidas) // Checar quantos corações há na camada
+		var vidas = layer_get_all_elements(layer_vidas); // Pega todos os corações já existentes na camada de vida
+		var quant_vidas = array_length(vidas); // Checar quantos corações há na camada
 		
-		if quant_vidas >= 1 { // Significa que a camada não ta vazia ( tem um instancia de coracao )
+		if (quant_vidas >= 1) { // Significa que a camada não ta vazia ( tem um instancia de coracao )
 			
-			var ultimo_coracao = layer_instance_get_instance(vidas[0]) // vidas[0] = ultimo icone de coração criado
+			var ultimo_coracao = layer_instance_get_instance(vidas[0]); // vidas[0] = ultimo icone de coração criado
 			
 			if ultimo_coracao{ 
-				var pos_x = (ultimo_coracao.x + ultimo_coracao.sprite_width / 2) + 50
-				var pos_y = ultimo_coracao.y
+				var pos_x = (ultimo_coracao.x + ultimo_coracao.sprite_width / 2) + 50;
+				var pos_y = ultimo_coracao.y;
 			}
 			
 		}
 		else { // No caso da camada estar vazia, cria o primeiro coração na posição de referência
 			
 			//show_debug_message(string(array_length(coracoes)))
-			var layer_referencias = layer_get_id("Referencias")
+			var layer_referencias = layer_get_id("Referencias");
 			if layer_referencias{
-				var referencias = layer_get_all_elements(layer_referencias)
-				for (i = 0; i < array_length(referencias); i++)
+				var _referencias = layer_get_all_elements(layer_referencias);
+				for (i = 0; i < array_length(_referencias); i++)
 				{	
 					
-					var element = layer_instance_get_instance(referencias[i])
-					if element
+					var element = layer_instance_get_instance(_referencias[i]);
+					if (element)
 					{
-						if element.object_index == ref_spawn_coracao // Checa se o elemento corresponde à referência correta
+						if (element.object_index == ref_spawn_coracao) // Checa se o elemento corresponde à referência correta
 						{
-							var pos_x = element.x
-							var pos_y = element.y
+							var pos_x = element.x;
+							var pos_y = element.y;
 						}
 					 }
 				}
@@ -125,10 +131,9 @@ function criar_ui_coracao(quantidade){
 		
 		// Cria um novo coração na camada e posição especificadas, escalado de maneira correta
 		
-		novo_coracao = instance_create_layer(pos_x,pos_y,layer_vidas,obj_vida)
-		novo_coracao.image_xscale = scalex_coracoes
-		novo_coracao.image_yscale = scaley_coracoes
-	
+		novo_coracao = instance_create_layer(pos_x,pos_y,layer_vidas,obj_vida);
+		novo_coracao.image_xscale = scalex_coracoes;
+		novo_coracao.image_yscale = scaley_coracoes;
 	}
 }
 
@@ -146,23 +151,7 @@ function remover_ui_coracao(){
 }
 
 
-// ** Relógio **/
-
-// Atualiza o relógio interno do jogo ( Checar se é usado )
-
-function atualizar_clock(){
-	tempo_atual = get_timer()
-}
-
-
-// ** No GameOver ** //
-
-function desenhar_tela_game_over(){ // ***Inutilizado
-	draw_set_font(GameOverFont);
-	draw_set_halign(fa_center);
-	draw_text_transformed(view_wport / 2, (view_hport / 2) - 100,"GAME OVER",0.5,0.5,0);
-}
-
+// ** No GameOver **
 
 function reset_inimigos(){
 
@@ -225,7 +214,7 @@ function player_morreu(){
 
 	if (keyboard_check_pressed(ord("R"))) // *** Retirar depois
 	{	
-		//show_debug_message("Apertou fii")
+
 		// Resetando status do player
 		controlador_cooldowns.alarm[0] = game_get_speed(gamespeed_fps) * 3 // resetar spawn de inimigos
 		controlador_cooldowns.alarm[1] = game_get_speed(gamespeed_fps) * 0.5 // resetar lançamento de projetil
@@ -308,6 +297,36 @@ function selec_inimigo_aleatorio(){
 	var n_aleatorio = irandom(quant_inimigos -1);
 	
 	return  tipos_inimigos[n_aleatorio];
+}
+
+// ** Velocidade ** 
+
+function handle_aumento_velocidade(){
+	if (player_score - score_desde_aumento >= intervalo_aumento)
+	{	
+		var nova_velocidade = clamp(global.velocidade_fase + AUMENTO_VELOCIDADE,0,VELOCIDADE_MAXIMA)
+		if (nova_velocidade != VELOCIDADE_MAXIMA)
+		{	
+			show_debug_message("Aumentando velocidade")
+			score_desde_aumento = player_score
+			global.velocidade_fase = nova_velocidade
+			atualizar_velocidade_cenario() // Objetos ja lidam com o próprio aumento de velocidade, mas as camadas de fundo, não
+		}
+	}
+}
+
+function atualizar_velocidade_cenario(){
+	var layer_montanhas = layer_get_id("Montanhas")
+	var layer_chao = layer_get_id("Chao")
+	if layer_montanhas // Subtrai pq a velocidade aumenta indo pra esquerda do plano ( x descresce )
+	{
+		layer_hspeed(layer_montanhas,layer_get_hspeed(layer_montanhas) - AUMENTO_VELOCIDADE)
+	}
+	
+	if layer_chao
+	{
+		layer_hspeed(layer_chao,layer_get_hspeed(layer_chao) - AUMENTO_VELOCIDADE)
+	}
 }
 
 // * "Runtime" <-- Não é esse nome mas me esqueci * //

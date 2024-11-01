@@ -156,8 +156,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Intro","path":"rooms/Intro/Intro.yy",},},
     {"roomId":{"name":"Gameplay","path":"rooms/Gameplay/Gameplay.yy",},},
+    {"roomId":{"name":"Intro","path":"rooms/Intro/Intro.yy",},},
     {"roomId":{"name":"menu","path":"rooms/menu/menu.yy",},},
     {"roomId":{"name":"menu_ajuda1","path":"rooms/menu_ajuda1/menu_ajuda1.yy",},},
     {"roomId":{"name":"menu_ajuda2","path":"rooms/menu_ajuda2/menu_ajuda2.yy",},},
