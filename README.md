@@ -5,12 +5,12 @@
   </p>
   <h2> Site <h2>
  https://rafaelmvalunoifsp.github.io/Proj3B-Jogo/
-  <h2> Desenvoldores <h2>
-    Programação: Rafael Morales Lucas de Lemos
-    Arte: Rafael Moreira, Rafael Morales, Luis Henrique
-    Efeitos Sonoros: Rafael Morales
-    Site: Rafael Morales e Lucas de Lemos
-    Música : Rafael Moreira
+  <h2> Desenvoldores </h2>
+    <b>Programação:</b> Rafael Morales Lucas de Lemos<br>
+    <b>Arte:</b> Rafael Moreira, Rafael Morales, Luis Henrique<br>
+    <b>Efeitos Sonoros:</b> Rafael Morales<br>
+    <b>Site:</b> Rafael Morales e Lucas de Lemos<br>
+    <b>Música :</b> Rafael Moreira<br>
 </body>
 
 
