@@ -1,17 +1,17 @@
 ![New Piskel (3)](https://github.com/user-attachments/assets/e9fb62af-30a5-46fa-94ff-b5236d97553f)
 
- <p>Este é um jogo 2D desenvolvido no Game Maker em um mês e meio como trabalho escolar. Inspirado no estilo do jogo do dinossauro do Google, você joga como Cytos, um alienígena corajoso cujo planeta foi invadido pelos Nexovirus. <br>Sua missão é sobreviver e derrotar os vírus que aparecem em seu caminho! Com um visual retrô e uma jogabilidade simples e viciante, este projeto foi feito para testar habilidades de design, programação e lógica de jogo.
+ <p>This is a 2D game developed in Game Maker over a month and a half as a school project. Inspired by the style of Google's dinosaur game, you play as Cytos, a brave alien whose planet has been invaded by the Nexovirus. <br>Your mission is to survive and defeat the viruses that appear in your path! With a retro visual style and simple yet addictive gameplay, this project was created to test skills in design, programming, and game logic.
    <br>
-   <b>Dowload do executavél disponível no site do jogo!</b>
+   <b>Download the executable from the game's website!</b>
   </p>
-  <h2> Site <h2>
+  <h2> Website <h2>
  https://rafaelmvalunoifsp.github.io/Proj3B-Jogo/
-  <h2> Desenvolvedores </h2>
-    <b>Programação:</b> Rafael Morales Lucas de Lemos<br>
-    <b>Arte:</b> Rafael Moreira, Rafael Morales, Luis Henrique<br>
-    <b>Efeitos Sonoros:</b> Rafael Morales<br>
-    <b>Site:</b> Rafael Morales e Lucas de Lemos<br>
-    <b>Música :</b> Rafael Moreira<br>
+  <h2> Developers </h2>
+    <b>Programming:</b> Rafael Morales Lucas de Lemos<br>
+    <b>Art:</b> Rafael Moreira, Rafael Morales, Luis Henrique<br>
+    <b>Sound Effects:</b> Rafael Morales<br>
+    <b>Website:</b> Rafael Morales e Lucas de Lemos<br>
+    <b>Music :</b> Rafael Moreira<br>
 </body>
 
 
