@@ -3,7 +3,7 @@
  <p>This is a 2D game developed in Game Maker over a month and a half as a school project. Inspired by the style of Google's dinosaur game, you play as Cytos, a brave alien whose planet has been invaded by the Nexovirus. <br>Your mission is to survive and defeat the viruses that appear in your path! With a retro visual style and simple yet addictive gameplay, this project was created to test skills in design, programming, and game logic.
    <br>
   <br>
-   ###<b>Download the executable from the game's website!</b>
+   ### Download the executable from the game's website!
   </p>
   <h2> Website <h2>
  https://rafaelmvalunoifsp.github.io/Proj3B-Jogo/
